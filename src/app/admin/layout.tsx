@@ -5,13 +5,14 @@ import Sidebar from "@/components/admin-panel/Sidebar";
 import { useAppSelector } from "@/redux/hooks";
 import { useSession } from "next-auth/react";
 
-const layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   const isLoading = useAppSelector((store) => store.loadingReducer);
   const { data: session } = useSession();
 
   if (!session?.user) {
     return <Login />;
   }
+
   return (
     <div className="flex">
       <Sidebar />
@@ -26,4 +27,4 @@ const layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   );
 };
 
-export default layout;
+export default Layout;
