@@ -1,6 +1,7 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+import { withUt } from "uploadthing/tw";
+ 
+export default withUt({
+  // Your existing Tailwind config
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,13 +9,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
+      accent: "#0989FF",
+      topHeadingPrimary: "#010f1c",
+      topHeadingSecondary: "#021d35",
+      pink: "#fd4b6b",
     },
   },
   plugins: [],
-};
-export default config;
+});
