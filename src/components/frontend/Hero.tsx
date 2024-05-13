@@ -1,17 +1,18 @@
 // Hero.tsx
 
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselItems = [
-    "b8.png",
-    "b6.png",
-    "b7.png",
-    "b1.jpg",
-    "b2.jpg",
-    "b3.jpg",
-    "b4.jpg",
+    "/b8.png",
+    "/b6.png",
+    "/b7.png",
+    "/b1.jpg",
+    "/b2.jpg",
+    "/b3.jpg",
+    "/b4.jpg",
   ];
 
   const handleClick = (index: number) => {
@@ -35,10 +36,11 @@ const Hero = () => {
         style={{ transform: `translateX(-${currentSlide * 25.1}%)` }}>
         {carouselItems.map((item, index) => (
           <div key={index} className="mx-2 w-[500px] max-h-[500px] flex-none">
-            <img
+            <Image
               src={item}
               alt={`Slide ${index + 1}`}
-              className="w-full h-full object-fill"
+              width={500}
+              height={500}
             />
           </div>
         ))}

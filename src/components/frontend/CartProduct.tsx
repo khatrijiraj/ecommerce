@@ -1,6 +1,7 @@
 import { removeFromCart } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { RxCross1 } from "react-icons/rx";
+import Image from "next/image";
 
 interface PropsType {
   id: string;
@@ -24,7 +25,7 @@ const CartProduct: React.FC<PropsType> = ({
   return (
     <div className="flex justify-between items-center">
       <div className="flex items-center gap-4">
-        <img className="h-[80px]" src={img} alt={title} />
+        <Image src={img} alt={title} width={80} height={80} />
         <div className="space-y-2">
           <h3 className="font-medium">{title}</h3>
           <p className="text-gray-600 text-[14px]">

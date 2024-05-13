@@ -29,7 +29,7 @@ const Dashboard = () => {
       .then((res) => setProducts(res.data))
       .catch((err) => console.log(err))
       .finally(() => dispatch(setLoading(false)));
-  }, [updateTable]);
+  }, [dispatch, updateTable]);
 
   return (
     <div>

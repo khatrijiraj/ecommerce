@@ -34,7 +34,7 @@ const ProductCard = ({ id, img, category, title, price }: PropsType) => {
   return (
     <div className="border border-gray-200 rounded-lg p-4 bg-white">
       <div className="text-center borber-b border-gray-700">
-        <img className="inline-block" src={img} />
+        <Image src={img} alt={title} width={300} height={300} />
       </div>
 
       <div className="py-4">
