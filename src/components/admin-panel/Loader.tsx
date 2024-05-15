@@ -1,11 +1,9 @@
 import React from "react";
 
-const Loader = () => {
-  return (
-    <div className="fixed w-full h-screen top-0 left-0 bg-[#0000006d] grid place-items-center">
-      <span className="loader"></span>
-    </div>
-  );
-};
+const Loader = () => (
+  <div className="fixed inset-0 bg-black bg-opacity-25 flex items-center justify-center">
+    <div className="loader"></div>
+  </div>
+);
 
 export default Loader;

@@ -4,11 +4,11 @@ import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
   return (
-    <div className="fixed w-full h-screen top-0 left-0 bg-[#00153a]  grid place-items-center">
+    <div className="fixed inset-0 bg-blue-900 bg-opacity-90 flex items-center justify-center">
       <button
         type="button"
         onClick={() => signIn("google")}
-        className="flex gap-4 text-white bg-[#005aeb] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium text-md px-6 py-3 text-center rounded-full items-center dark:focus:ring-[#4285F4]/55">
+        className="flex gap-4 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-500 font-medium text-md px-6 py-3 text-center rounded-full items-center md:w-2/3 lg:w-1/3 dark:focus:ring-blue-700">
         <FaGoogle />
         Sign in with Google
       </button>

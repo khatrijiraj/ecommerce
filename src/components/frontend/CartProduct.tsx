@@ -7,8 +7,8 @@ interface PropsType {
   id: string;
   img: string;
   title: string;
-  price: string;
-  quantity: string;
+  price: number;
+  quantity: number;
 }
 
 const CartProduct: React.FC<PropsType> = ({
@@ -19,22 +19,23 @@ const CartProduct: React.FC<PropsType> = ({
   quantity,
 }) => {
   const dispatch = useAppDispatch();
+  
   const handleRemoveFromCart = () => {
     dispatch(removeFromCart(id));
   };
+
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center p-4 border-b border-gray-200">
       <div className="flex items-center gap-4">
-        <Image src={img} alt={title} width={80} height={80} />
-        <div className="space-y-2">
-          <h3 className="font-medium">{title}</h3>
-          <p className="text-gray-600 text-[14px]">
-            {quantity} * ${price}.00
+        <Image src={img} alt={title} width={80} height={80} className="object-cover rounded" />
+        <div className="space-y-1">
+          <h3 className="font-medium text-sm sm:text-base">{title}</h3>
+          <p className="text-gray-600 text-xs sm:text-sm">
+            {quantity} × ₹{price}.00
           </p>
         </div>
       </div>
-
-      <RxCross1 className="cursor-pointer" onClick={handleRemoveFromCart} />
+      <RxCross1 className="cursor-pointer text-gray-600 hover:text-gray-800 transition" onClick={handleRemoveFromCart} />
     </div>
   );
 };

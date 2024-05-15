@@ -11,10 +11,10 @@ const Cart = ({ setShowCart }: any) => {
   };
 
   return (
-    <div className="backdrop-blur-md bg-white/30 w-full min-h-screen fixed left-0 top-0 z-20 overflow-y-scroll">
-      <div className="max-w-[500px] border-s-2 w-full min-h-full bg-white absolute right-0 top-0 p-6">
+    <div className="backdrop-blur-md bg-white/30 w-full min-h-screen fixed left-0 top-0 z-20 overflow-y-auto">
+      <div className="max-w-[95%] sm:max-w-[500px] border-s-2 w-full min-h-full bg-white absolute right-0 top-0 p-4 sm:p-6">
         <RxCross1
-          className="absolute right-0 top-0 m-6 text-[24px] cursor-pointer"
+          className="absolute right-0 top-0 m-4 sm:m-6 text-[24px] cursor-pointer"
           onClick={() => setShowCart(false)}
         />
         <h3 className="pt-6 text-lg font-medium text-gray-600 uppercase">
@@ -34,7 +34,7 @@ const Cart = ({ setShowCart }: any) => {
           ))}
         </div>
 
-        <div className="flex justify-between items-center font-medium text-xl py-4">
+        <div className="flex justify-between items-center font-medium text-lg sm:text-xl py-4">
           <p>Total:</p>
           <p>₹{getTotal()}.00</p>
         </div>

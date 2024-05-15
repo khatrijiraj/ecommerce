@@ -1,6 +1,7 @@
 import { addToCart } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import Image from "next/image";
+import React from "react";
 import toast from "react-hot-toast";
 import {
   AiFillStar,
@@ -18,7 +19,8 @@ interface PropsType {
 
 const ProductCard = ({ id, img, category, title, price }: PropsType) => {
   const dispatch = useAppDispatch();
-  const addProductToCart = () => {
+
+  const addProductToCart = React.useCallback(() => {
     const payLoad = {
       id,
       img,
@@ -29,12 +31,21 @@ const ProductCard = ({ id, img, category, title, price }: PropsType) => {
 
     dispatch(addToCart(payLoad));
     toast.success("Added to cart");
-  };
+  }, [dispatch, id, img, title, price]);
 
   return (
     <div className="border border-gray-200 rounded-lg p-4 bg-white">
-      <div className="text-center borber-b border-gray-700">
-        <Image src={img} alt={title} width={300} height={300} />
+      <div className="text-center border-b border-gray-700">
+        <div className="mb-4 w-full h-64 relative overflow-hidden">
+          <Image
+            src={img}
+            alt={title}
+            layout="fill"
+            objectFit="contain"
+            className="rounded-t-lg"
+            loading="lazy"
+          />
+        </div>
       </div>
 
       <div className="py-4">
@@ -54,7 +65,10 @@ const ProductCard = ({ id, img, category, title, price }: PropsType) => {
         <h2 className="text-2xl font-bold text-gray-700">₹{price}</h2>
         <div
           onClick={addProductToCart}
-          className="rounded-full flex gap-2 items-center bg-blue-700 text-white px-4 py-2 cursor-pointer hover:bg-blue-800">
+          className="rounded-full flex gap-2 items-center bg-blue-700 text-white px-4 py-2 cursor-pointer hover:bg-blue-800"
+          role="button"
+          tabIndex={0}
+        >
           <AiOutlineShoppingCart />
           Add to cart
         </div>

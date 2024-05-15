@@ -11,18 +11,18 @@ const Navbar = ({ setShowCart }: PropsType) => {
   const cartCount = useAppSelector((state) => state.cartReducer.length);
 
   return (
-    <div className="px-10 pt-4 bg-white top-0">
-      <div>
+    <div className="px-4 md:px-10 mt-6 bg-white top-0">
+      <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center">
           <div className="text-2xl font-semibold text-blue-700">ECommerce</div>
 
-          <div className="lg:flex hidden w-full max-w-[600px]">
+          <div className="lg:flex hidden w-full max-w-sm md:max-w-md lg:max-w-lg">
             <input
-              className=" border-2 border-blue-700  rounded-tl-2xl rounded-bl-2xl py-2 px-6 bg-white  w-full text-blue-700 outline-none"
+              className="border-2 border-blue-700 rounded-tl-2xl rounded-bl-2xl py-2 px-6 bg-white w-full text-blue-700 outline-none"
               type="text"
               placeholder="Search for products..."
             />
-            <div className="rounded-tr-2xl rounded-br-2xl  text-white text-[20px] grid place-items-center px-8 bg-blue-700 hover:bg-blue-800 cusrpoin">
+            <div className="rounded-tr-2xl rounded-br-2xl text-white text-[20px] grid place-items-center px-8 bg-blue-700 hover:bg-blue-800 cursor-pointer">
               <BsSearch />
             </div>
           </div>

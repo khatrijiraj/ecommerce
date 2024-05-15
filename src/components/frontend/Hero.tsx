@@ -1,10 +1,9 @@
-// Hero.tsx
-
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [numVisibleImages, setNumVisibleImages] = useState(1);
   const carouselItems = [
     "/b8.png",
     "/b6.png",
@@ -15,31 +14,56 @@ const Hero = () => {
     "/b4.jpg",
   ];
 
-  const handleClick = (index: number) => {
+  const handleClick = (index: React.SetStateAction<number>) => {
     setCurrentSlide(index);
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide(
-        currentSlide === carouselItems.length - 1 ? 0 : currentSlide + 1
-      );
-    }, 5000);
+    const calculateNumVisibleImages = () => {
+      if (window.innerWidth >= 1024) {
+        return 3;
+      } else if (window.innerWidth >= 768) {
+        return 2;
+      } else {
+        return 1;
+      }
+    };
 
-    return () => clearInterval(interval);
-  }, [currentSlide, carouselItems.length]);
+    setNumVisibleImages(calculateNumVisibleImages());
+
+    const handleResize = () => {
+      setNumVisibleImages(calculateNumVisibleImages());
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const getTransformStyle = () => {
+    return {
+      transform: `translateX(-${(currentSlide * 100) / numVisibleImages}%)`,
+    };
+  };
 
   return (
-    <div className="mx-10 mt-4 relative md:w-auto  w-[400px] max-h-[500px] overflow-hidden">
+    <div className="relative w-full max-w-6xl mx-auto overflow-hidden mt-4">
       <div
         className="flex transition-transform duration-500 ease-in-out"
-        style={{ transform: `translateX(-${currentSlide * 25.1}%)` }}>
+        style={getTransformStyle()}
+      >
         {carouselItems.map((item, index) => (
-          <div key={index} className="mx-2 w-[500px] max-h-[500px] flex-none">
+          <div
+            key={item}
+            className={`flex-shrink-0 w-full md:w-1/2 lg:w-1/${numVisibleImages} px-4`}
+          >
             <Image
               src={item}
               alt={`Slide ${index + 1}`}
-              width={500}
+              layout="responsive"
+              width={1000}
               height={500}
             />
           </div>
@@ -52,7 +76,8 @@ const Hero = () => {
             onClick={() => handleClick(index)}
             className={`h-2 w-2 mx-1 rounded-full ${
               index === currentSlide ? "bg-gray-900" : "bg-gray-200"
-            }`}></button>
+            }`}
+          ></button>
         ))}
       </div>
     </div>
