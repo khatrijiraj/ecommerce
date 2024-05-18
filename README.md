@@ -38,6 +38,7 @@ Link: https://ecommerce-rajkhatri.vercel.app/
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## Project Structure
+```
 ecommerce
 ├─ .gitignore
 ├─ next.config.mjs
@@ -131,3 +132,4 @@ ecommerce
 │     └─ uploadthing.ts
 ├─ tailwind.config.ts
 └─ tsconfig.json
+```
